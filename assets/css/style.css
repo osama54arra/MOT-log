@@ -134,10 +134,28 @@ body {
   
   .custom-btn:hover {
     background-color: rgba(205, 171, 53, 0.7); /* توهج خفيف عند التمرير */
-    color: #000;
+    color: #ffffff;
+    text-decoration:solid;
+  }
+  .custom-btnWhite {
+    background-color: rgba(217, 217, 217, 0.5); /* ذهبي شفاف */
+    border: none;
+    color: #000; /* النص أسود وواضح */
+    font-weight: bold;
+    border-radius: 8px;
+    backdrop-filter: blur(3px); /* تأثير زجاجي ناعم */
+    transition: 0.3s ease;
+  }
+  .custom-btnWhite:hover {
+    background-color: rgba(217, 217, 217, 0.7); /* توهج خفيف عند التمرير */
+    color: #ffffff;
+    text-decoration:solid;
   }
   .gold-color {
     color: rgba(205, 171, 53, 1);
+  }
+  .w-color {
+    color: rgba(112, 112, 53, 1);
   }
   
   .gold-bg {

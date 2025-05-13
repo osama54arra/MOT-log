@@ -12,7 +12,7 @@
     <style>
     body {
       font-family: 'Cairo', sans-serif;
-      background-color: #f8f9fa;
+      background-color:rgba(238, 238, 238, 1);
       margin: 0;
       padding: 0;
       overflow-x: hidden;
@@ -36,8 +36,8 @@
 
     padding: 20px;
     position: fixed;
-    border-top-right-radius: 50px; /* Top right radius */
-    border-bottom-right-radius: 50px; /* Bottom right radius */
+    border-top-right-radius: 30px; /* Top right radius */
+    border-bottom-right-radius: 30px; /* Bottom right radius */
 
     }
     .left-sidebar .header {
@@ -119,10 +119,12 @@
     /* Middle Main Content */
     .main-content {
       margin-right: 240px;
-      margin-left: 175px;
+      margin-left: 150px;
       padding: 20px;
       min-height: 100vh;
-      background-color: #fff;
+      background-color: rgba(238, 238, 238, 1);
+      border-radius: 20px;
+      border:rgb(216, 211, 211) 0.5px solid;
     }
     .kpi-cards {
       display: grid;
@@ -144,6 +146,9 @@
       box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
       padding: 20px;
       text-align: center;
+      /* display: flex;
+      align-items: center;
+      justify-content: space-between; */
     }
     .kpi-card h5 {
       font-weight: 700;
@@ -203,6 +208,61 @@
       margin-bottom: 15px;
       color: #333;
     }
+      .custom-btn {
+    background-color: rgba(205, 171, 53, 0.5); /* ذهبي شفاف */
+    border: none;
+    color: #000; /* النص أسود وواضح */
+    font-weight: bold;
+    border-radius: 8px;
+    backdrop-filter: blur(2px); /* تأثير زجاجي ناعم */
+    transition: 0.3s ease;
+  }
+  
+  .custom-btn:hover {
+    background-color: rgba(205, 171, 53, 1); /* توهج خفيف عند التمرير */
+    color: #ffffff;
+    text-decoration:solid;
+  }
+  .custom-btnWhite {
+    background-color: rgba(217, 217, 217, 0.9); /* ذهبي شفاف */
+    border: none;
+    color: #000; /* النص أسود وواضح */
+    font-weight: bold;
+    border-radius: 8px;
+    backdrop-filter: blur(3px); /* تأثير زجاجي ناعم */
+    transition: 0.3s ease;
+  }
+  .custom-btnWhite:hover {
+    background-color: rgba(217, 217, 217, 0.7); /* توهج خفيف عند التمرير */
+    color: #ffffff;
+    text-decoration:solid;
+  }
+  .gold-color {
+    color: rgba(205, 171, 53, 1);
+  }
+  
+  /* الحاوية للصور أسفل يمين */
+  .bottom-right-group {
+    position: absolute;
+    bottom: 0px;
+    right: 40px;
+    text-align: center;
+    z-index: 10;
+  }
+  .position-relative{
+    margin-right: 2%;
+  }
+  .bottom-right-decor {
+    width: 100px;
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .bilsan-logo {
+    width: 100px;
+    margin-bottom:30%;
+    margin-top: 0%;
+  }
     /* Right Sidebar */
     .right-sidebar {
       width: 220px;
@@ -216,6 +276,21 @@
       overflow-y: auto;
       z-index: 1030;
     }
+    .right-sidebar .kpi-cards  {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+      .right-sidebar .kpi-cards .kpi-card {
+        display: flex;
+      align-items: center;
+      justify-content: space-between; 
+      border-radius: 0px;
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 1);
+      padding: 0px;
+      text-align: center;
+      }
     .right-sidebar .kpi-cards,
     .right-sidebar .charts-section {
       margin-bottom: 20px;
@@ -269,8 +344,8 @@
       <li><a href="#"><i class="fa-solid fa-building" style="color: white;"></i><span>منشآت المركبات</span></a></li>
       <li><a href="#"><i class="fa-solid fa-gauge" style="color: white;"></i><span>مراكز الديناموتر</span></a></li>
       <li><a href="#"><i class="fa-solid fa-check" style="color: white;"></i><span>مراكز الفحص الهندسي</span></a></li>
-      <li><a href="#"><i class="fa-solid fa-exclamation-triangle" style="color: white;"></i><span>الإجبارية</span></a></li>
-      <li><a href="#"><i class="fa-solid fa-chart-line" style="color: white;"></i><span>الحركات النشطة</span></a></li>
+      <!-- <li><a href="#"><i class="fa-solid fa-exclamation-triangle" style="color: white;"></i><span>الإجبارية</span></a></li> -->
+      <!-- <li><a href="#"><i class="fa-solid fa-chart-line" style="color: white;"></i><span>الحركات النشطة</span></a></li> -->
     </ul>
   </aside>
 
@@ -296,32 +371,32 @@
   
     <div class="kpi-cards">
       <div class="kpi-card">
-        <h5>مركبات تبرع - منحة</h5>
+        <h6>مركبات تبرع - منحة</h6>
         <div class="value">79</div>
         <div class="change">+15%</div>
       </div>
       <div class="kpi-card">
-        <h5>مركبات الوكالة</h5>
+        <h6>مركبات الوكالة</h6>
         <div class="value">28</div>
         <div class="change negative">%</div>
       </div>
       <div class="kpi-card">
-        <h5>مركبات القطاع الخاص</h5>
+        <h6>مركبات القطاع الخاص</h6>
         <div class="value">150</div>
         <div class="change">+15%</div>
       </div>
       <div class="kpi-card">
-        <h5>اجمالي المركبات الواردة</h5>
+        <h6>اجمالي المركبات الواردة</h6>
         <div class="value">267</div>
         <div class="change">+15%</div>
       </div>
       <div class="kpi-card">
-        <h5>مركبات مستعملة</h5>
+        <h6>مركبات مستعملة</h6>
         <div class="value">79</div>
         <div class="change">+15%</div>
       </div>
       <div class="kpi-card">
-        <h5>مركبات الوكالة</h5>
+        <h6>مركبات الوكالة</h6>
         <div class="value">10</div>
         <div class="change negative">-10%</div>
       </div>
@@ -377,11 +452,14 @@
   </main>
 
   <!-- Right Sidebar -->
+   
     <aside class="right-sidebar">
-    <div class="kpi-cards">
-      <div class="kpi-card">
-        <h6>لوحة التحكم</h6>
-      </div>
+    <img src="assets/img/mot-logo-1.png" alt="شعار وزارة النقل والمواصلات" class="mb-2 mg-fluid w-80 d-block mx-auto " />
+    <button type="submit" class="btn custom-btn w-100 mb-3 text-start">لوحة التحكم</button>
+    <div class="kpi-cards text-end">
+      <!-- <div class="kpi-card">
+        <h6>لوحة التحكم</h6><i class="fa-solid fa-angle-down"></i>
+      </div> -->
       <div class="kpi-card">
         <h6>المعابر والتنسيق</h6><i class="fa-solid fa-angle-down"></i>
       </div>
@@ -406,7 +484,7 @@
       <div class="kpi-card">
         <h6>مراكز الفحص الهندسي</h6><i class="fa-solid fa-angle-down"></i>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card text-start">
         <h6>الحركات النشطة على النظام</h6><i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="kpi-card">
@@ -440,7 +518,7 @@
       <canvas id="lineChartRight" width="100%" height="200"></canvas>
     </div> -->
     <div class="footer-logo mt-auto text-center">
-      <img src="assets/img/Bilsan Logo 1.png" alt="Bilsan Business Solutions" style="width: 120px; margin-top: 20px;" />
+      <img src="assets/img/Bilsan Logo 1.png" alt="Bilsan Business Solutions" style="width: 120px; margin-top: 20px;" class="bilsan-logo bottom-right-group" />
     </div>
   </aside>
 

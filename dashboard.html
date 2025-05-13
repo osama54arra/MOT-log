@@ -40,6 +40,7 @@
     border-bottom-right-radius: 30px; /* Bottom right radius */
 
     }
+  
     .left-sidebar .header {
       text-align: center;
       display: flex;
@@ -115,6 +116,34 @@
       /* box-shadow: 0 0 0 2px #ffcc00; */
       margin-left: 0;
       margin-bottom: 5px;
+    }
+        .card {
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .card small {
+      font-size: 0.8rem;
+      color:rgba(139, 144, 154, 1);
+    }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #28a745;
+      border-radius: 50%;
+      display: inline-block;
+      margin-left: 4px;
+    }
+    .time-icon {
+      color: #fd7e14;
+    }
+    .location-icon {
+      color: #198754;
     }
     /* Middle Main Content */
     .main-content {
@@ -413,7 +442,7 @@
       </div>
     </div>
 
-    <div class="activity-section">
+    <!-- <div class="activity-section">
       <h5>المستخدمون النشطون</h5>
       <ul class="list-group mb-3">
         <li class="list-group-item">فادي ارشيد - شركة النقل - 10 دقائق مضت</li>
@@ -434,16 +463,145 @@
         <li class="list-group-item">شكوى من سارة محمد - قيد المعالجة</li>
         <li class="list-group-item">شكوى من أحمد علي - تم الحل</li>
       </ul>
-    </div>
+    </div> -->
 
-    <div class="recent-transactions">
+    <!-- <div class="recent-transactions">
       <h5>أحدث التحويلات من الجانب الآخر</h5>
       <ul class="list-group">
         <li class="list-group-item">12:30 - تحويل من فادي ارشيد إلى شركة النقل</li>
         <li class="list-group-item">11:45 - تحويل من سارة محمد إلى شركة السيارات</li>
         <li class="list-group-item">10:15 - تحويل من أحمد علي إلى شركة الشحن</li>
       </ul>
+    </div> -->
+
+<div class="container-fluid p-4">
+  <div class="row g-4">
+    <!-- Active Crossings Card -->
+    <div class="col-lg-4">
+      <div class="card p-3">
+        <div class="d-flex justify-content-betwee</div>n align-items-center mb-3">
+          <h6 class="mb-0">المعابر النشطة</h6>
+          <button class="btn btn-light btn-sm dropdown-toggle">اليوم</button>
+        </div>
+        <ul class="list-unstyled">
+          <li class="mb-3 d-flex align-items-center justify-content-between">
+            <div>
+              <div><i class="bi bi-clock time-icon"></i> 05 : 00 م – 06 : 00 ص</div>
+              <div class="text-muted small">رام الله</div>
+            </div>
+            <div>
+              معبر بيتونيا <span class="status-dot"></span>
+            </div>
+          </li>
+          <li class="mb-3 d-flex align-items-center justify-content-between">
+            <div>
+              <div><i class="bi bi-clock time-icon"></i> 06 : 00 م – 08 : 00 ص</div>
+              <div class="text-muted small">الخليل</div>
+            </div>
+            <div>
+              معبر ترقوميا <span class="status-dot"></span>
+            </div>
+          </li>
+          <li class="mb-3 d-flex align-items-center justify-content-between">
+            <div>
+              <div><i class="bi bi-clock time-icon"></i> 10 : 00 م – 12 : 00 م</div>
+              <div class="text-muted small">الخليل</div>
+            </div>
+            <div>
+              معبر ترقوميا <span class="status-dot"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
+ 
+    <!-- Top Suppliers Card -->
+    <div class="col-lg-4">
+      <div class="card p-3">
+        <div class="d-flex justi</div>fy-content-between align-items-center mb-3">
+          <h6 class="mb-0">الموردين الأعلى استيراد</h6>
+          <button class="btn btn-light btn-sm dropdown-toggle">فبراير</button>
+        </div>
+        <ul class="list-unstyled">
+          <li class="mb-3 d-flex align-items-center">
+            <img src="assets/img/shareka.png" class="avatar me-2">
+            <div class="me-2">
+              <div>شركة أوتوكار لتجارة السيارات</div>
+              <small class="text-muted"><i class="bi bi-geo-alt-fill location-icon"></i> رام الله</small>
+            </div>
+          </li>
+          <li class="mb-3 d-flex align-items-center">
+            <img src="assets/img/shareka.png" class="avatar me-2">
+            <div class="me-2">
+              <div>Car Service Company</div>
+              <small class="text-muted"><i class="bi bi-geo-alt-fill location-icon"></i> نابلس</small>
+            </div>
+          </li>
+          <li class="mb-3 d-flex align-items-center">
+            <img src="assets/img/shareka.png" class="avatar me-2">
+            <div class="me-2">
+              <div>Car Trade Company</div>
+              <small class="text-muted"><i class="bi bi-geo-alt-fill location-icon"></i> غزة</small>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- Active Users Card -->
+    <div class="col-lg-4">
+      <div class="card p-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h6 class="mb-0">المستخدمون النشطون</h6>
+          <span class="badge bg-success rounded-pill px-3">الآن</span>
+        </div>
+        <div class="d-flex flex-column gap-3">
+          <div class="d-flex align-items-center">
+            <img src="assets/img/man.png" class="avatar me-2">
+            <div>
+              <strong>م. محمد أبو يحيى</strong><br>
+              <small class="text-muted">دائرة المعابر والتنسيق</small>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <img src="assets/img/man.png" class="avatar me-2">
+            <div>
+              <strong>م. محمد أحمد</strong><br>
+              <small class="text-muted">دائرة ترخيص منشآت المركبات...</small>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <img src="assets/img/man.png" class="avatar me-2">
+            <div>
+              <strong>د. وائل الأحمد</strong><br>
+              <small class="text-muted">الرقابة الإدارية</small>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <img src="assets/img/woman.png" class="avatar me-2">
+            <div>
+              <strong>م. سهى محمد</strong><br>
+              <small class="text-muted">دائرة استيراد المركبات الجديدة</small>
+            </div>
+          </div>
+          <div class="d-flex align-items-center">
+            <img src="assets/img/man.png" class="avatar me-2">
+            <div>
+              <strong>م. خالد الأحمد</strong><br>
+              <small class="text-muted">دائرة استيراد قطع الغيار ومنتج...</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+  </div>
+</div>
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <div class="annual-import-average chart-container mt-4">
       <h6>متوسط الاستيراد السنوي</h6>

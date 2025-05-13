@@ -19,9 +19,9 @@
     }
     /* Left Navigation Panel */
     .left-sidebar {
-      width: 220px;
-      height: 100vh;
-      background-color: #fff;
+      width: 120px;
+      height: 75vh;
+      background-color: rgba(205,171,53,1);
       position: fixed;
       top: 0;
       left: 0;
@@ -32,6 +32,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+
+
+    padding: 20px;
+    position: fixed;
+    border-top-right-radius: 30px; /* Top right radius */
+    border-bottom-right-radius: 30px; /* Bottom right radius */
+
     }
     .left-sidebar .header {
       display: flex;
@@ -46,7 +53,7 @@
     .left-sidebar .header h4 {
       margin: 0;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1rem
       color: #000;
     }
     .left-sidebar .user-profile {
@@ -204,21 +211,18 @@
   <!-- Left Navigation Panel -->
   <aside class="left-sidebar">
     <ul class="sidebar-menu">
-      <!-- <li><a href="#" class="active"><i class="fa-solid fa-tachometer-alt"></i> لوحة التحكم</a></li> -->
-      <li><a href="#"><i class="fa-solid fa-user"></i> الملف الشخصي</a></li>
-      <li><a href="#"><i class="fa-solid fa-cogs"></i> المعايير والتنسيق</a></li>
-      <li><a href="#"><i class="fa-solid fa-car"></i> المركبات المستعملة</a></li>
-      <li><a href="#"><i class="fa-solid fa-envelope"></i> رسائلي</a></li>
-      <li><a href="#"><i class="fa-solid fa-tools"></i> قطع الغيار والمرور</a></li>
-      <li><a href="#"><i class="fa-solid fa-building"></i> منشآت المركبات</a></li>
-      <li><a href="#"><i class="fa-solid fa-gauge"></i> مراكز الديناموتر</a></li>
-      <li><a href="#"><i class="fa-solid fa-check"></i> مراكز الفحص الهندسي</a></li>
-      <li><a href="#"><i class="fa-solid fa-exclamation-triangle"></i> الإجبارية</a></li>
-      <li><a href="#"><i class="fa-solid fa-chart-line"></i> الحركات النشطة على النظام</a></li>
+      <!-- <li><a href="#" class="active"><i class="fa-solid fa-tachometer-alt" style="color: white;"></i><span>لوحة التحكم</span></a></li> -->
+      <li><a href="#"><i class="fa-solid fa-user" style="color: white;"></i><span>الملف الشخصي</span></a></li>
+      <li><a href="#"><i class="fa-solid fa-cogs" style="color: white;"></i><span>المعايير والتنسيق</span></a></li>
+      <li><a href="#"><i class="fa-solid fa-car" style="color: white;"></i><span>المركبات المستعملة</span></a></li>
+      <li><a href="#"><i class="fa-solid fa-envelope" style="color: white;"></i><span>رسائلي</span></a></li>
+      <li><a href="#"><i class="fa-solid fa-tools" style="color: white;"></i><span>قطع الغيار والمرور</span></a></li>
+      <li><a href="#"><i class="fa-solid fa-building" style="color: white;"></i><span>منشآت المركبات</span></a></li>
+      <li><a href="#"><i class="fa-solid fa-gauge" style="color: white;"></i><span>مراكز الديناموتر</span></a></li>
+      <li><a href="#"><i class="fa-solid fa-check" style="color: white;"></i><span>مراكز الفحص الهندسي</span></a></li>
+      <li><a href="#"><i class="fa-solid fa-exclamation-triangle" style="color: white;"></i><span>الإجبارية</span></a></li>
+      <li><a href="#"><i class="fa-solid fa-chart-line" style="color: white;"></i><span>الحركات النشطة</span></a></li>
     </ul>
-    <div class="footer-logo mt-auto text-center">
-      <img src="assets/img/Bilsan Logo 1.png" alt="Bilsan Business Solutions" style="width: 120px; margin-top: 20px;" />
-    </div>
   </aside>
 
   <!-- Middle Main Content -->
@@ -343,7 +347,7 @@
       </div>
     </div>
 
-    <div class="charts-section">
+    <!-- <div class="charts-section">
       <div class="chart-container">
         <h6>إحصائيات تسجيل المركبات</h6>
         <canvas id="pieChartRight" width="100%" height="200"></canvas>
@@ -367,6 +371,9 @@
     <div class="annual-import-average chart-container mt-4">
       <h6>متوسط الاستيراد السنوي</h6>
       <canvas id="lineChartRight" width="100%" height="200"></canvas>
+    </div> -->
+    <div class="footer-logo mt-auto text-center">
+      <img src="assets/img/Bilsan Logo 1.png" alt="Bilsan Business Solutions" style="width: 120px; margin-top: 20px;" />
     </div>
   </aside>
 

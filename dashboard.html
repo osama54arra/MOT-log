@@ -20,7 +20,7 @@
     /* Left Navigation Panel */
     .left-sidebar {
       width: 120px;
-      height: 75vh;
+      height: 85vh;
       background-color: rgba(205,171,53,1);
       position: fixed;
       top: 0;
@@ -36,11 +36,12 @@
 
     padding: 20px;
     position: fixed;
-    border-top-right-radius: 30px; /* Top right radius */
-    border-bottom-right-radius: 30px; /* Bottom right radius */
+    border-top-right-radius: 50px; /* Top right radius */
+    border-bottom-right-radius: 50px; /* Bottom right radius */
 
     }
     .left-sidebar .header {
+      text-align: center;
       display: flex;
       align-items: center;
       margin-bottom: 20px;
@@ -52,9 +53,10 @@
     }
     .left-sidebar .header h4 {
       margin: 0;
-      font-weight: 700;
-      font-size: 1rem
-      color: #000;
+      text-align: center;
+      font-weight: 200;
+      font-size: 14px;
+      color: #ffffff;
     }
     .left-sidebar .user-profile {
       display: flex;
@@ -68,8 +70,12 @@
       margin-left: 10px;
     }
     .left-sidebar .user-profile span {
-      font-weight: 600;
-      color: #333;
+      text-align: center;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 200;
+      font-size: 14px;
+      color: #ffffff;
+
     }
     .left-sidebar ul.sidebar-menu {
       list-style: none;
@@ -82,10 +88,13 @@
     }
     .left-sidebar ul.sidebar-menu li a {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      color: #333;
+      color: #ffffff;
       text-decoration: none;
-      font-weight: 600;
+      font-size: 12px;
+      text-align: center ;
+      font-weight: 200;
       transition: color 0.3s ease;
     }
     .left-sidebar ul.sidebar-menu li a:hover,
@@ -96,6 +105,16 @@
       margin-left: 10px;
       font-size: 20px;
       color: #ffcc00;
+      background-color:rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* box-shadow: 0 0 0 2px #ffcc00; */
+      margin-left: 0;
+      margin-bottom: 5px;
     }
     /* Middle Main Content */
     .main-content {
@@ -171,6 +190,7 @@
     .right-sidebar .kpi-cards,
     .right-sidebar .charts-section {
       margin-bottom: 20px;
+      flex: auto;
     }
     .quick-actions {
       display: flex;
@@ -263,11 +283,11 @@
     <div class="charts-section">
       <div class="chart-container">
         <h6>إحصائيات تسجيل المركبات</h6>
-        <canvas id="pieChart" width="100%" height="200"></canvas>
+        <canvas id="pieChart" width="50%" height="50"></canvas>
       </div>
       <div class="chart-container">
         <h6>توزيع تسجيل المركبات حسب النوع</h6>
-        <canvas id="barChart" width="100%" height="200"></canvas>
+        <canvas id="barChart" width="100%" height="50"></canvas>
       </div>
     </div>
 
@@ -313,37 +333,37 @@
     <aside class="right-sidebar">
     <div class="kpi-cards">
       <div class="kpi-card">
-        <h5>لوحة التحكم</h5>
+        <h6>لوحة التحكم</h6>
       </div>
       <div class="kpi-card">
-        <h5>المعابر والتنسيق</h5>
+        <h6>المعابر والتنسيق</h6><i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="kpi-card">
-        <h5>المركبات الجديدة</h5>
+        <h6>المركبات الجديدة</h6><i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="kpi-card">
-        <h5>المركبات المستعملة</h5>
+        <h6>المركبات المستعملة</h6><i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="kpi-card">
-        <h5>التراخيص</h5>
+        <h6>التراخيص</h6><i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="kpi-card">
-        <h5>قطع الغيار و المرور</h5>
+        <h6>قطع الغيار و المرور</h6><i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="kpi-card">
-        <h5>منشآت المركبات</h5>
+        <h6>منشآت المركبات</h6><i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="kpi-card">
-        <h5>مراكز الديناموميتر</h5>
+        <h6>مراكز الديناموميتر</h6><i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="kpi-card">
-        <h5>مراكز الفحص الهندسي</h5>
+        <h6>مراكز الفحص الهندسي</h6><i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="kpi-card">
-        <h5>الحركات النشطة على النظام</h5>
+        <h6>الحركات النشطة على النظام</h6><i class="fa-solid fa-angle-down"></i>
       </div>
       <div class="kpi-card">
-        <h5>الرقابة الإدارية</h5>
+        <h6>الرقابة الإدارية</h6><i class="fa-solid fa-angle-down"></i>
       </div>
     </div>
 

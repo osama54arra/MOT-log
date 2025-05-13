@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم - وزارة النقل والمواصلات</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    /* Left Navigation Panel */
+    .left-sidebar {
+      width: 220px;
+      height: 100vh;
+      background-color: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow-y: auto;
+      z-index: 1030;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .left-sidebar .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .left-sidebar .header img {
+      width: 40px;
+      height: 40px;
+      margin-left: 10px;
+    }
+    .left-sidebar .header h4 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #000;
+    }
+    .left-sidebar .user-profile {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .left-sidebar .user-profile img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-left: 10px;
+    }
+    .left-sidebar .user-profile span {
+      font-weight: 600;
+      color: #333;
+    }
+    .left-sidebar ul.sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1;
+    }
+    .left-sidebar ul.sidebar-menu li {
+      margin-bottom: 15px;
+    }
+    .left-sidebar ul.sidebar-menu li a {
+      display: flex;
+      align-items: center;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .left-sidebar ul.sidebar-menu li a:hover,
+    .left-sidebar ul.sidebar-menu li a.active {
+      color: #ffcc00;
+    }
+    .left-sidebar ul.sidebar-menu li a i {
+      margin-left: 10px;
+      font-size: 20px;
+      color: #ffcc00;
+    }
+    /* Middle Main Content */
+    .main-content {
+      margin-right: 220px;
+      margin-left: 240px;
+      padding: 20px;
+      min-height: 100vh;
+      background-color: #fff;
+    }
+    .kpi-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .kpi-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      padding: 20px;
+      text-align: center;
+    }
+    .kpi-card h5 {
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .kpi-card .value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #000;
+    }
+    .kpi-card .change {
+      font-weight: 600;
+      color: green;
+    }
+    .kpi-card .change.negative {
+      color: red;
+    }
+    /* Charts Section */
+    .charts-section {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .chart-container {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      padding: 20px;
+      flex: 1 1 300px;
+      min-width: 300px;
+    }
+    .chart-container h6 {
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    /* Right Sidebar */
+    .right-sidebar {
+      width: 220px;
+      height: 100vh;
+      background-color: #fff;
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow-y: auto;
+      z-index: 1030;
+    }
+    .right-sidebar .kpi-cards,
+    .right-sidebar .charts-section {
+      margin-bottom: 20px;
+    }
+    .quick-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .quick-actions button {
+      background-color: #ffcc00;
+      border: none;
+      padding: 10px;
+      font-weight: 700;
+      color: #000;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .quick-actions button:hover {
+      background-color: #e6b800;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      background-color: #fff;
+      border-top: 1px solid #ddd;
+      font-weight: 600;
+      color: #666;
+      position: fixed;
+      bottom: 0;
+      left: 220px;
+      right: 220px;
+      z-index: 1020;
+    }
+  </style>
+</head>
+<body>
+  <!-- Left Navigation Panel -->
+  <aside class="left-sidebar">
+    <ul class="sidebar-menu">
+      <!-- <li><a href="#" class="active"><i class="fa-solid fa-tachometer-alt"></i> لوحة التحكم</a></li> -->
+      <li><a href="#"><i class="fa-solid fa-user"></i> الملف الشخصي</a></li>
+      <li><a href="#"><i class="fa-solid fa-cogs"></i> المعايير والتنسيق</a></li>
+      <li><a href="#"><i class="fa-solid fa-car"></i> المركبات المستعملة</a></li>
+      <li><a href="#"><i class="fa-solid fa-envelope"></i> رسائلي</a></li>
+      <li><a href="#"><i class="fa-solid fa-tools"></i> قطع الغيار والمرور</a></li>
+      <li><a href="#"><i class="fa-solid fa-building"></i> منشآت المركبات</a></li>
+      <li><a href="#"><i class="fa-solid fa-gauge"></i> مراكز الديناموتر</a></li>
+      <li><a href="#"><i class="fa-solid fa-check"></i> مراكز الفحص الهندسي</a></li>
+      <li><a href="#"><i class="fa-solid fa-exclamation-triangle"></i> الإجبارية</a></li>
+      <li><a href="#"><i class="fa-solid fa-chart-line"></i> الحركات النشطة على النظام</a></li>
+    </ul>
+    <div class="footer-logo mt-auto text-center">
+      <img src="assets/img/Bilsan Logo 1.png" alt="Bilsan Business Solutions" style="width: 120px; margin-top: 20px;" />
+    </div>
+  </aside>
+
+  <!-- Middle Main Content -->
+  <main class="main-content">
+    <div class="kpi-cards">
+      <div class="kpi-card">
+        <h5>مركبات تبرع - منحة</h5>
+        <div class="value">79</div>
+        <div class="change">+15%</div>
+      </div>
+      <div class="kpi-card">
+        <h5>مركبات الوكالة</h5>
+        <div class="value">28</div>
+        <div class="change negative">%</div>
+      </div>
+      <div class="kpi-card">
+        <h5>مركبات القطاع الخاص</h5>
+        <div class="value">150</div>
+        <div class="change">+15%</div>
+      </div>
+      <div class="kpi-card">
+        <h5>اجمالي المركبات الواردة</h5>
+        <div class="value">267</div>
+        <div class="change">+15%</div>
+      </div>
+      <div class="kpi-card">
+        <h5>مركبات مستعملة</h5>
+        <div class="value">79</div>
+        <div class="change">+15%</div>
+      </div>
+      <div class="kpi-card">
+        <h5>مركبات الوكالة</h5>
+        <div class="value">10</div>
+        <div class="change negative">-10%</div>
+      </div>
+    </div>
+
+    <div class="charts-section">
+      <div class="chart-container">
+        <h6>إحصائيات تسجيل المركبات</h6>
+        <canvas id="pieChart" width="100%" height="200"></canvas>
+      </div>
+      <div class="chart-container">
+        <h6>توزيع تسجيل المركبات حسب النوع</h6>
+        <canvas id="barChart" width="100%" height="200"></canvas>
+      </div>
+    </div>
+
+    <div class="activity-section">
+      <h5>المستخدمون النشطون</h5>
+      <ul class="list-group mb-3">
+        <li class="list-group-item">فادي ارشيد - شركة النقل - 10 دقائق مضت</li>
+        <li class="list-group-item">سارة محمد - شركة السيارات - 20 دقيقة مضت</li>
+        <li class="list-group-item">أحمد علي - شركة الشحن - 30 دقيقة مضت</li>
+      </ul>
+
+      <h5>الموردين الأعلى استيراد</h5>
+      <ul class="list-group mb-3">
+        <li class="list-group-item">شركة النقل الوطنية - رام الله</li>
+        <li class="list-group-item">شركة السيارات العالمية - نابلس</li>
+        <li class="list-group-item">شركة الشحن السريع - غزة</li>
+      </ul>
+
+      <h5>المعارض النشطة</h5>
+      <ul class="list-group mb-3">
+        <li class="list-group-item">شكوى من فادي ارشيد - تم الحل</li>
+        <li class="list-group-item">شكوى من سارة محمد - قيد المعالجة</li>
+        <li class="list-group-item">شكوى من أحمد علي - تم الحل</li>
+      </ul>
+    </div>
+
+    <div class="recent-transactions">
+      <h5>أحدث التحويلات من الجانب الآخر</h5>
+      <ul class="list-group">
+        <li class="list-group-item">12:30 - تحويل من فادي ارشيد إلى شركة النقل</li>
+        <li class="list-group-item">11:45 - تحويل من سارة محمد إلى شركة السيارات</li>
+        <li class="list-group-item">10:15 - تحويل من أحمد علي إلى شركة الشحن</li>
+      </ul>
+    </div>
+
+    <div class="annual-import-average chart-container mt-4">
+      <h6>متوسط الاستيراد السنوي</h6>
+      <canvas id="lineChart" width="100%" height="200"></canvas>
+    </div>
+  </main>
+
+  <!-- Right Sidebar -->
+    <aside class="right-sidebar">
+    <div class="kpi-cards">
+      <div class="kpi-card">
+        <h5>لوحة التحكم</h5>
+      </div>
+      <div class="kpi-card">
+        <h5>المعابر والتنسيق</h5>
+      </div>
+      <div class="kpi-card">
+        <h5>المركبات الجديدة</h5>
+      </div>
+      <div class="kpi-card">
+        <h5>المركبات المستعملة</h5>
+      </div>
+      <div class="kpi-card">
+        <h5>التراخيص</h5>
+      </div>
+      <div class="kpi-card">
+        <h5>قطع الغيار و المرور</h5>
+      </div>
+      <div class="kpi-card">
+        <h5>منشآت المركبات</h5>
+      </div>
+      <div class="kpi-card">
+        <h5>مراكز الديناموميتر</h5>
+      </div>
+      <div class="kpi-card">
+        <h5>مراكز الفحص الهندسي</h5>
+      </div>
+      <div class="kpi-card">
+        <h5>الحركات النشطة على النظام</h5>
+      </div>
+      <div class="kpi-card">
+        <h5>الرقابة الإدارية</h5>
+      </div>
+    </div>
+
+    <div class="charts-section">
+      <div class="chart-container">
+        <h6>إحصائيات تسجيل المركبات</h6>
+        <canvas id="pieChartRight" width="100%" height="200"></canvas>
+      </div>
+      <div class="chart-container">
+        <h6>توزيع تسجيل المركبات حسب النوع</h6>
+        <canvas id="barChartRight" width="100%" height="200"></canvas>
+      </div>
+    </div>
+
+    <div class="quick-actions">
+      <button>لوحة التحكم</button>
+      <button>المعايير والتنسيق</button>
+      <button>المركبات المستعملة</button>
+      <button>قطع الغيار والمرور</button>
+      <button>مراكز الفحص الهندسي</button>
+      <button>الإجبارية</button>
+      <button>الحركات النشطة على النظام</button>
+    </div>
+
+    <div class="annual-import-average chart-container mt-4">
+      <h6>متوسط الاستيراد السنوي</h6>
+      <canvas id="lineChartRight" width="100%" height="200"></canvas>
+    </div>
+  </aside>
+
+  <footer>
+    2025 @ وزارة النقل والمواصلات
+  </footer>
+
+  <!-- Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Pie Chart Data
+    const pieData = {
+      labels: ['هوندا', 'كيا', 'نيسان', 'فورد', 'تويوتا', 'هيونداي', 'شيفروليه', 'مرسيدس'],
+      datasets: [{
+        data: [50, 30, 20, 15, 40, 25, 10, 5],
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#66FF66', '#FF6666'],
+      }]
+    };
+
+    // Bar Chart Data
+    const barData = {
+      labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'],
+      datasets: [{
+        label: 'تسجيل المركبات',
+        data: [30, 45, 60, 40, 70, 55, 80, 90, 75, 60, 50, 65],
+        backgroundColor: '#36A2EB'
+      }]
+    };
+
+    // Line Chart Data
+    const lineData = {
+      labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'],
+      datasets: [{
+        label: 'متوسط الاستيراد السنوي',
+        data: [20, 25, 30, 28, 35, 40, 45, 50, 48, 42, 38, 40],
+        borderColor: '#FFCC00',
+        backgroundColor: 'rgba(255, 204, 0, 0.2)',
+        fill: true,
+        tension: 0.3
+      }]
+    };
+
+    // Chart Options
+    const options = {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            font: {
+              family: 'Cairo'
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    };
+
+    // Render Charts
+    window.onload = function() {
+      const pieCtx = document.getElementById('pieChart').getContext('2d');
+      new Chart(pieCtx, {
+        type: 'pie',
+        data: pieData,
+        options: options
+      });
+
+      const barCtx = document.getElementById('barChart').getContext('2d');
+      new Chart(barCtx, {
+        type: 'bar',
+        data: barData,
+        options: options
+      });
+
+      const lineCtx = document.getElementById('lineChart').getContext('2d');
+      new Chart(lineCtx, {
+        type: 'line',
+        data: lineData,
+        options: options
+      });
+
+      // Right sidebar charts
+      const pieCtxRight = document.getElementById('pieChartRight').getContext('2d');
+      new Chart(pieCtxRight, {
+        type: 'pie',
+        data: pieData,
+        options: options
+      });
+
+      const barCtxRight = document.getElementById('barChartRight').getContext('2d');
+      new Chart(barCtxRight, {
+        type: 'bar',
+        data: barData,
+        options: options
+      });
+
+      const lineCtxRight = document.getElementById('lineChartRight').getContext('2d');
+      new Chart(lineCtxRight, {
+        type: 'line',
+        data: lineData,
+        options: options
+      });
+    };
+  </script>
+</body>
+</html>

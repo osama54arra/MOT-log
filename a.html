@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transport Dashboard</title>
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap @5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .dashboard-container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .left-column {
+      width: 250px;
+      background-color: #222;
+      padding: 20px;
+      border-right: 1px solid #444;
+    }
+    .middle-column {
+      flex: 2;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .right-column {
+      width: 300px;
+      background-color: #222;
+      padding: 20px;
+      border-left: 1px solid #444;
+    }
+    .kpi-card {
+      background-color: #333;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .quick-actions button {
+      width: 100%;
+      margin-bottom: 10px;
+      background-color: #ffc107;
+      color: black;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #222;
+      color: gray;
+      font-size: 0.9rem;
+      border-top: 1px solid #444;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="dashboard-container">
+
+    <!-- Left Column: Navigation Panel -->
+    <div class="left-column">
+      <div class="text-center mb-4">
+        <img src="https://via.placeholder.com/60 " class="rounded-circle mb-2" alt="User Avatar">
+        <h6>أهلاً بك، فادي ارشيد</h6>
+        <small class="text-muted">Ministry of Transport & Comm.</small>
+      </div>
+      <nav class="main-nav">
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-decoration-none text-white py-2 d-block">لوحة التحكم</a></li>
+          <li><a href="#" class="text-decoration-none text-white py-2 d-block">الملف الشخصي</a></li>
+          <li><a href="#" class="text-decoration-none text-white py-2 d-block">المعايير والتنسيق</a></li>
+          <li><a href="#" class="text-decoration-none text-white py-2 d-block">المركبات المستعملة</a></li>
+          <li><a href="#" class="text-decoration-none text-white py-2 d-block">رسائلي</a></li>
+          <li><a href="#" class="text-decoration-none text-white py-2 d-block">قطع الغيار والمرور</a></li>
+          <li><a href="#" class="text-decoration-none text-white py-2 d-block">مراكز الدينامومتر</a></li>
+          <li><a href="#" class="text-decoration-none text-white py-2 d-block">مراكز الفحص الهندسي</a></li>
+          <li><a href="#" class="text-decoration-none text-white py-2 d-block">الإجبارية</a></li>
+          <li><a href="#" class="text-decoration-none text-white py-2 d-block">الحركات النشطة على النظام</a></li>
+        </ul>
+      </nav>
+      <div class="mt-auto text-center mt-4 pt-4 border-top">
+        <img src="https://via.placeholder.com/100x40?text=BILSAN " alt="BILSAN Logo" class="img-fluid">
+      </div>
+    </div>
+
+    <!-- Middle Column: Main Dashboard Content -->
+    <div class="middle-column">
+      <div class="row g-3 mb-4">
+        <!-- KPI Cards -->
+        <div class="col-md-6 col-lg-3">
+          <div class="kpi-card">
+            <h6>Donated Vehicles - Grants</h6>
+            <h4>79</h4>
+            <small class="text-success">+15% from last month</small>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="kpi-card">
+            <h6>Agency Vehicles</h6>
+            <h4>28</h4>
+            <small class="text-danger">-10% from last month</small>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="kpi-card">
+            <h6>Private Sector Vehicles</h6>
+            <h4>150</h4>
+            <small class="text-success">+15%</small>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="kpi-card">
+            <h6>Total Incoming Vehicles</h6>
+            <h4>267</h4>
+            <small class="text-success">+15%</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="mb-4">
+        <h6>Vehicle Brand Distribution</h6>
+        <canvas id="pieChart" height="150"></canvas>
+      </div>
+
+      <div class="mb-4">
+        <h6>Monthly Registration Trends (2023)</h6>
+        <canvas id="barChart" height="100"></canvas>
+      </div>
+
+      <!-- Recent Activity Tabs -->
+      <div class="card bg-dark text-white mb-4">
+        <div class="card-body">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab">Active Users</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="importers-tab" data-bs-toggle="tab" data-bs-target="#importers" type="button" role="tab">Top Importers</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="complaints-tab" data-bs-toggle="tab" data-bs-target="#complaints" type="button" role="tab">Active Complaints</button>
+            </li>
+          </ul>
+          <div class="tab-content mt-3">
+            <div class="tab-pane fade show active" id="users" role="tabpanel">
+              <ul class="list-group list-group-flush bg-dark text-white">
+                <li class="list-group-item bg-dark">John Doe - Admin - 2 hrs ago</li>
+                <li class="list-group-item bg-dark">Sarah Lee - Inspector - 3 hrs ago</li>
+              </ul>
+            </div>
+            <div class="tab-pane fade" id="importers" role="tabpanel">
+              <ul class="list-group list-group-flush bg-dark text-white">
+                <li class="list-group-item bg-dark">ABC Motors - Dubai - Imported 5 vehicles</li>
+                <li class="list-group-item bg-dark">XYZ Auto - Jeddah - 2 new imports</li>
+              </ul>
+            </div>
+            <div class="tab-pane fade" id="complaints" role="tabpanel">
+              <ul class="list-group list-group-flush bg-dark text-white">
+                <li class="list-group-item bg-dark">Vehicle not registered - Issue #123</li>
+                <li class="list-group-item bg-dark">Payment failed - Ref ID: XYZ789</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Latest Transactions -->
+      <div class="card bg-dark text-white mb-4">
+        <div class="card-header">Latest Transfers</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush bg-dark text-white">
+            <li class="list-group-item bg-dark">2025-04-05 - From: Inspection Center To: Licensing Unit</li>
+            <li class="list-group-item bg-dark">2025-04-04 - From: Customs To: Vehicle Registry</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Annual Import Graph -->
+      <div class="mb-4">
+        <h6>Annual Import Average (2023)</h6>
+        <canvas id="lineChart" height="100"></canvas>
+      </div>
+    </div>
+
+    <!-- Right Column: Additional Metrics & Controls -->
+    <div class="right-column">
+      <h6>Duplicate KPIs</h6>
+      <div class="mb-3 kpi-card">
+        <h6>Used Vehicles</h6>
+        <h4>79</h4>
+        <small class="text-success">+15%</small>
+      </div>
+      <div class="mb-3 kpi-card">
+        <h6>Agency Vehicles</h6>
+        <h4>28</h4>
+        <small class="text-danger">-10%</small>
+      </div>
+
+      <hr>
+
+      <h6>Quick Actions</h6>
+      <div class="quick-actions mt-3">
+        <button class="btn btn-warning mb-2">Dashboard</button>
+        <button class="btn btn-warning mb-2">Standards & Coordination</button>
+        <button class="btn btn-warning mb-2">Used Vehicles</button>
+        <button class="btn btn-warning mb-2">Parts & Traffic</button>
+        <button class="btn btn-warning mb-2">Inspection Centers</button>
+        <button class="btn btn-warning mb-2">Mandatory</button>
+        <button class="btn btn-warning mb-2">Active Movements</button>
+      </div>
+
+      <hr>
+
+      <h6>Import Average Chart</h6>
+      <canvas id="lineChartRight" height="100"></canvas>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    2025 @ Ministry of Transport and Communications
+  </footer>
+
+  <!-- Bootstrap JS + Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap @5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Chart.js for charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+  <script>
+    // Pie Chart
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    new Chart(pieCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Honda', 'Kia', 'Nissan', 'Ford', 'Other'],
+        datasets: [{
+          label: 'Vehicle Brands',
+          data: [30, 20, 15, 25, 10],
+          backgroundColor: ['#ffc107','#28a745','#17a2b8','#dc3545','#6c757d']
+        }]
+      }
+    });
+
+    // Bar Chart
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    new Chart(barCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+          label: 'Registrations',
+          data: [20, 30, 25, 40, 35, 50, 45, 60, 55, 70, 65, 80],
+          backgroundColor: '#17a2b8'
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    // Line Chart
+    const lineCtx = document.getElementById('lineChart').getContext('2d');
+    new Chart(lineCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [{
+          label: 'Imports per Month',
+          data: [10, 15, 13, 18, 20, 22, 25, 23, 27, 30, 28, 32],
+          borderColor: '#ffc107',
+          tension: 0.3
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
